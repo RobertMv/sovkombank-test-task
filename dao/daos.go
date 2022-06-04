@@ -3,26 +3,25 @@ package dao
 import "time"
 
 type User struct {
-	Id      int64
+	Id      string
 	Phone   string
 	Name    string
 	Surname string
 }
 
 type Doctor struct {
-	Id      int64
-	Name    string
-	Surname string
+	Id   string
+	Name string
+	Spec string
 }
 
 type Slots struct {
-	Id       int64
-	DoctorId int64
+	DoctorId string
 	Slot     time.Time
 }
 
 type Appointment struct {
-	DoctorId int64
-	UserId   int64
+	DoctorId string
+	UserId   string
 	Slot     time.Time
 }

@@ -28,8 +28,11 @@ func main() {
 	migrateDB(db)
 
 	repos := repository.NewRepositories(db)
-	services := service.NewServices(repos, db)
+	services := service.NewServices(repos)
 	handlers := handler.NewHandlers(services)
+
+	notifier := service.NewNotifierService(db)
+	notifier.Run()
 
 	srv := new(clinic.Server)
 	if err := srv.Run(viper.GetString("PORT"), handlers.InitRoutes()); err != nil {

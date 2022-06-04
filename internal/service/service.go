@@ -2,12 +2,19 @@ package service
 
 import (
 	"clinic/internal/repository"
-	"database/sql"
+	"clinic/model"
 )
 
-type Services struct {
+type Appointment interface {
+	Add(appointment model.Appointment) error
 }
 
-func NewServices(repos *repository.Repositories, db *sql.DB) *Services {
-	return &Services{}
+type Services struct {
+	Appointment
+}
+
+func NewServices(repos *repository.Repositories) *Services {
+	return &Services{
+		Appointment: NewAppointmentService(repos.Appointments),
+	}
 }

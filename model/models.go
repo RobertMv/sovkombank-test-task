@@ -3,21 +3,21 @@ package model
 import "time"
 
 type User struct {
-	Id      int64
-	Phone   string
-	Name    string
-	Surname string
+	Id      string `json:"id"`
+	Phone   string `json:"phone"`
+	Name    string `json:"name"`
+	Surname string `json:"surname"`
 }
 
 type Doctor struct {
-	Id      int64
-	Name    string
-	Surname string
-	Slots   []time.Time
+	Id    string      `json:"id"`
+	Name  string      `json:"name"`
+	Spec  string      `json:"spec"`
+	Slots []time.Time `json:"slots"`
 }
 
 type Appointment struct {
-	DoctorId int64
-	UserId   int64
-	Slot     time.Time
+	DoctorId string    `json:"doctorId"`
+	UserId   string    `json:"userId"`
+	Slot     time.Time `json:"slot"`
 }
