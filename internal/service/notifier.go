@@ -18,7 +18,7 @@ func NewNotifierService(db *sql.DB) *NotifierService {
 
 func (s *NotifierService) Run() {
 	logFile := getLogFile("log.log")
-	go s.notify(30*time.Second, logFile)
+	go s.notify(60*time.Second, logFile)
 }
 
 func (s *NotifierService) notify(duration time.Duration, file *os.File) {
